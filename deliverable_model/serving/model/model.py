@@ -1,4 +1,5 @@
 import importlib
+import logging
 from pathlib import Path
 from typing import Any, Callable, List
 
@@ -11,6 +12,9 @@ from deliverable_model.serving.model.model_loaders.model_registry import (
     get_model_loader_instance_by_type,
 )
 from deliverable_model.utils import class_from_module_path
+
+
+logger = logging.getLogger(__name__)
 
 
 class Model(object):
@@ -43,11 +47,16 @@ class Model(object):
         return self
 
     def inference(self, request: Request) -> Response:
+        logger.debug("Converter for request receives request: %s", request)
+
         args, kwargs = self.converter_for_request(request)
+        logger.debug("Converter for request returns: args: %s, kwargs: %s", args, kwargs)
 
         native_response = self.model_loader_instance.inference(*args, **kwargs)
+        logger.debug("Native model responses: %s", native_response)
 
         response = self.converter_for_response(native_response)
+        logger.debug("Converter for response returns: %s", response)
 
         return response
 
