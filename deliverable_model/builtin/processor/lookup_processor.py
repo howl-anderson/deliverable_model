@@ -54,7 +54,7 @@ class LookupProcessor(ProcessorBase):
         base_config = super().get_config()
         config = self.lookup_table.get_config()
 
-        return {**base_config, **config}
+        return {**base_config, **{"config": config}}
 
     def serialize(self, asset_dir: Path):
         instance_asset = asset_dir / "data"
