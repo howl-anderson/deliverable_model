@@ -37,7 +37,7 @@ class ModelBuilder(object):
 
     def __init__(self):
         self.model: ModelInfo = None
-        self.dependency = ["tensorflow-gpu<2.0"]
+        self.dependency = ["tensorflow<2.0"]
         self.custom_object_dependency = []
 
         self.converter_for_request: Callable[[Request], Any] = (
