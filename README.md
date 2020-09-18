@@ -3,7 +3,7 @@
 设计 DeliverableModel 的目的是最大可能的降低模型部署和使用的难度。寻求让部署变成黑盒操作和开箱即用，最大可能的降低调用者的负担，不需要知道任何实现细节，做端到端的推理，同时也不会对模型生产者构成很大的工作负担。
 
 ## 逻辑结构
-从模型使用者的角度来说，DeliverableModel 就是一个从可以从磁盘载入的函数。用户只需要使用原生的Python数据类型来调用这个函数，就可以得到一个请求结果。使用示例如下：
+从模型使用者的角度来说，DeliverableModel 就是一个从可以从磁盘载入的函数。用户只需要使用原生的 Python 数据类型来调用这个函数，就可以得到一个请求结果。使用示例如下：
 
 ```python
 import deliverable_model as dm
@@ -38,3 +38,6 @@ DeliverableModel 的内部处理逻辑如下：
 ## 详细设计
 
 见 [DeliverableModel 设计文档](design/DeliverableModel_arch_design_doc.md)
+
+## Roadmap
+将客户端创建/导出 deliverable_model 的代码部分，独立成单独的 SDK 包，这样可以避免 deliverable_model 所依赖的 TensorFlow 等软件的版本和客户的代码出现冲突。
