@@ -15,7 +15,7 @@ requirements = [
     "dill",
     "micro-toolkit",
     "tqdm",
-    "tensorflow>=1.15.0,<2.0.0",
+    "tensorflow>=1.15.0,<3.0.0",
     "seq2annotation",
     "tensorflow-serving-api>=1.15.0,<2.0.0"
 ]
