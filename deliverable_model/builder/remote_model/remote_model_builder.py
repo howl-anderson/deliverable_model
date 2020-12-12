@@ -38,7 +38,7 @@ class RemoteModelBuilder(object):
     def __init__(self, model_type, model_dir=None):
         self.model: ModelInfo = ModelInfo(model_type, model_dir)
 
-        self.dependency = ["tensorflow-gpu<2.0"]
+        self.dependency = ["tensorflow<2.0"]
         self.custom_object_dependency = []
 
         self.converter_for_request: Callable[[Request], Any] = (
